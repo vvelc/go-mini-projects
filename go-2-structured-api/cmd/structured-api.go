@@ -15,7 +15,7 @@ func main() {
 	r.Use(middleware.Logger)
 
 	s := server.NewServer(r)
-	log.Printf("Listening on: http://localhost%d 🚀", config.GetConfig().PORT)
+	log.Printf("Listening on: http://localhost:%d 🚀", config.GetConfig().PORT)
 	err := s.HttpServer.ListenAndServe()
 
 	if err != http.ErrServerClosed {
