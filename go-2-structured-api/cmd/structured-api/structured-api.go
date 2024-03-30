@@ -5,24 +5,21 @@ import (
 	"net/http"
 	"structured-api/internal/config"
 	"structured-api/internal/server"
-
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+	"structured-api/pkg/router"
+	"structured-api/util/logger"
 )
 
 func main() {
-	r := chi.NewRouter()
-	r.Use(middleware.Logger)
+	l := logger.New(config.GetConfig().IS_DEBUG)
+	r := router.New(l)
 
 	s := server.NewServer(r)
 	log.Printf("Listening on: http://localhost:%d 🚀", config.GetConfig().PORT)
 	err := s.HttpServer.ListenAndServe()
 
 	if err != http.ErrServerClosed {
-	 log.Fatalf("Listen: %s\n", err)
+		log.Fatalf("Listen: %s\n", err)
 	}
 
 	log.Println("service stopped")
-   
-   }
-
+}
