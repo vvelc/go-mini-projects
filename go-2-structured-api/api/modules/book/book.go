@@ -4,7 +4,7 @@ import (
 	"errors"
 	"math/rand"
 	"slices"
-	"structured-api/api/err"
+	"structured-api/api/common/err"
 )
 
 type Book struct {

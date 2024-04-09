@@ -1,8 +1,8 @@
 package router
 
 import (
-	"structured-api/api/book"
-	"structured-api/api/health"
+	"structured-api/api/modules/book"
+	"structured-api/api/modules/health"
 	"structured-api/api/router/middleware"
 
 	"github.com/go-chi/chi/v5"
