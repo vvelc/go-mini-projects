@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"structured-api/internal/config"
 	"structured-api/internal/server"
-	"structured-api/pkg/router"
+	"structured-api/api/router"
 	"structured-api/util/logger"
 )
 
