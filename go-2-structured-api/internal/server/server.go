@@ -13,8 +13,8 @@ type Server struct {
 	router     *chi.Mux
 }
 
-func NewServer(r *chi.Mux) *Server {
-	host := fmt.Sprintf(":%d",  config.GetConfig().PORT)
+func NewServer(c *config.Config, r *chi.Mux) *Server {
+	host := fmt.Sprintf(":%d", c.Port)
 
 	return &Server{
 		HttpServer: &http.Server{Addr: host, Handler: r},

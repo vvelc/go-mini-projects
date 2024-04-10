@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -14,14 +15,20 @@ import (
 )
 
 func main() {
+	// Setup configuration
+	c, err := config.LoadConfig()
+	if err != nil {
+		log.Fatal("failed to load config:", err)
+	}
+
 	// Setup logger
-	l := logger.New(config.GetConfig().IS_DEBUG)
+	l := logger.New(c.IsDebug)
 
 	// Setup router
 	r := router.New(l)
 
 	// Setup HTTP Server
-	s := server.NewServer(r)
+	s := server.NewServer(c, r)
 
 	// Server run context
 	serverCtx, serverStopCtx := context.WithCancel(context.Background())
@@ -58,8 +65,8 @@ func main() {
 	}()
 
 	// Start HTTP Server
-	l.Info().Msgf("listening on: http://localhost:%d 🚀", config.GetConfig().PORT)
-	err := s.HttpServer.ListenAndServe()
+	l.Info().Msgf("listening on: http://localhost:%d 🚀", config.GetConfig().Port)
+	err = s.HttpServer.ListenAndServe()
 
 	// Log in case of error starting server
 	if err != http.ErrServerClosed {
