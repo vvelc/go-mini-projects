@@ -15,14 +15,20 @@ func New(l *zerolog.Logger) *chi.Mux {
 	r := chi.NewRouter()
 
 	// Global Middlewares
+	r.Use(chizero.LoggerMiddleware(l))
+	r.Use(mdw.Recoverer)
+	r.Use(middleware.Secure)
+	r.Use(middleware.Cors)
 	r.Use(mdw.RedirectSlashes)
 	r.Use(middleware.RequestID)
 	r.Use(middleware.ContentTypeJSON)
-	r.Use(chizero.LoggerMiddleware(l))
 
+	// Health route
 	r.Get("/livez", health.Read)
 
+	// v1 API routes
 	r.Route("/v1", func(r chi.Router) {
+		// Books routes
 		r.Route("/books", func(r chi.Router) {
 			r.Post("/", book.Create)
 			r.Get("/", book.GetAll)
