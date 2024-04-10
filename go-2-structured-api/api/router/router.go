@@ -7,7 +7,6 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	mdw "github.com/go-chi/chi/v5/middleware"
-	"github.com/go-chi/render"
 	chizero "github.com/ironstar-io/chizerolog"
 	"github.com/rs/zerolog"
 )
@@ -16,11 +15,9 @@ func New(l *zerolog.Logger) *chi.Mux {
 	r := chi.NewRouter()
 
 	// Global Middlewares
-	//r.Use(mdw.Logger)
-	// r.Use(middleware.ContentTypeJSON)
-	r.Use(render.SetContentType(render.ContentTypeJSON))
 	r.Use(mdw.RedirectSlashes)
 	r.Use(middleware.RequestID)
+	r.Use(middleware.ContentTypeJSON)
 	r.Use(chizero.LoggerMiddleware(l))
 
 	r.Get("/livez", health.Read)
