@@ -24,7 +24,7 @@ func New(l *zerolog.Logger) *chi.Mux {
 	r.Use(middleware.ContentTypeJSON)
 
 	// Health route
-	r.Get("/livez", health.Read)
+	r.Get("/healthz", health.Read)
 
 	// v1 API routes
 	r.Route("/v1", func(r chi.Router) {
