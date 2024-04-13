@@ -1,6 +1,6 @@
 # structured-api
 
-This is the simple-api upgraded, with:
+This is the [simple-api](https://github.com/vvelc/go-mini-projects/tree/main/go-1-simple-api) upgraded, with:
 * Standard Go project structure - [go project structure](https://github.com/golang-standards/project-layout)
 * Middlewares
 * Advanced Logger - [zerolog](https://github.com/rs/zerolog)
