@@ -16,11 +16,11 @@ This is the [simple-api](https://github.com/vvelc/go-mini-projects/tree/main/go-
 | Name          | HTTP Method   | Route             |
 |---------------|---------------|-------------------|
 | Health        | GET	        | /healthz          |
-| Create Book	| GET	        | /v1/books         |
+| Create Book	| POST	        | /v1/books         |
 | List Books	| GET	        | /v1/books         |
-| Get Book		| GET	        | /v1/books/{id}         |
-| Update Book	| GET	        | /v1/books/{id}         |
-| Delete Book	| GET	        | /v1/books/{id}         |
+| Get Book		| GET	        | /v1/books/{id}    |
+| Update Book	| PUT	        | /v1/books/{id}    |
+| Delete Book	| DELETE        | /v1/books/{id}    |
 
 ## Book Entity
 Just for reference, here's what the `Book` entity looks like
