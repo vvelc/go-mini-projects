@@ -18,7 +18,7 @@ func main() {
 	// Setup configuration
 	c, err := config.LoadConfig()
 	if err != nil {
-		log.Fatal("failed to load config:", err)
+		log.Fatal("failed to load config: ", err)
 	}
 
 	// Setup logger
