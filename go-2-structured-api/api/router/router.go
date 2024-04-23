@@ -18,7 +18,6 @@ func New(l *zerolog.Logger) *chi.Mux {
 	r.Use(chizero.LoggerMiddleware(l))
 	r.Use(mdw.Recoverer)
 	r.Use(middleware.Secure)
-	//r.Use(middleware.CleanXSS)
 	r.Use(middleware.Cors)
 	r.Use(mdw.RedirectSlashes)
 	r.Use(middleware.RequestID)
